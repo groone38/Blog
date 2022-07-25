@@ -3,15 +3,15 @@ import Role from "../models/Role.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator";
-import secret from '../config.js'
+import secret from "../config.js";
 
 const generateAccessToken = (id, roles) => {
-    const payload = {
-        id,
-        roles
-    }
-    return jwt.sign(payload, secret, {expiresIn: '24h'})
-}
+  const payload = {
+    id,
+    roles,
+  };
+  return jwt.sign(payload, secret, { expiresIn: "24h" });
+};
 
 class AuthController {
   async registration(req, res) {
@@ -52,7 +52,7 @@ class AuthController {
   async login(req, res) {
     try {
       const { username, password } = req.body;
-      const user = await User.findOne({username});
+      const user = await User.findOne({ username });
       if (!user) {
         return res.status(400).json({
           message: "Пользователь с таким именем не найден",
@@ -64,8 +64,11 @@ class AuthController {
           message: "Пароль не верный",
         });
       }
-      const token = generateAccessToken(user._id, user.roles)
-      return res.json(token)
+      const token = generateAccessToken(user._id, user.roles);
+      return res.json({
+        token: token,
+        user: user,
+      });
     } catch (error) {
       console.log(error);
       res.status(400).json({
@@ -81,7 +84,7 @@ class AuthController {
 
       // await userRole.save()
       // await adminRole.save()
-      const users = await User.find()
+      const users = await User.find();
       res.json(users);
     } catch (error) {
       console.log(error);

@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 94vh;
+}
+
+.block {
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    .block__btn {
+        width: 100%;
+        margin: 0 auto;
+    }
+    label {
+        margin-top: 10px;
+    }
+    input {
+        padding: 10px;
+    }
+}
