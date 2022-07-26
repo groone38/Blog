@@ -35,7 +35,7 @@ export const Header = () => {
           {!sing.token ? (
             <>
               <Button color="inherit">
-                <Link to="/">Login</Link>
+                <Link to="/login">Login</Link>
               </Button>
               <Button color="inherit">
                 <Link to="/registr">Sing up</Link>

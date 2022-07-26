@@ -10,7 +10,8 @@ const initialState: ModalState = {
         passwodr: '',
         roles: [] 
     },
-    loading: false
+    loading: false,
+    error: ''
 }
 
 export const authReducer = (state = initialState, action: ModalAction): ModalState => {
@@ -19,10 +20,12 @@ export const authReducer = (state = initialState, action: ModalAction): ModalSta
             return {
                 ...state,
                 token: action.payload.token,
-                user: action.payload.user
+                user: action.payload.user,
+                error: ''
             }
         case AuthActionTypes.LOGOUT:
             return {
+                ...state,
                 token: '',
                 user: {
                     _id: '',
@@ -30,7 +33,12 @@ export const authReducer = (state = initialState, action: ModalAction): ModalSta
                     passwodr: '',
                     roles: [] 
                 },
-                loading: false
+                error: ''
+            }
+        case AuthActionTypes.ERROR:
+            return {
+                ...state,
+                error: action.payload
             }
         case LoadingActionTypes.LOADING:
             return {

@@ -1,0 +1,19 @@
+.card {
+    margin-bottom: 20px;
+}
+
+.card__icon_heart:hover {
+    color: red;
+}
+
+.card__icon_share:hover {
+    color: blueviolet
+}
+
+.card__icon_expand:hover {
+    color: lightgray
+}
+
+.card_action {
+    justify-content: end;
+}

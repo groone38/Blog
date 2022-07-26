@@ -5,7 +5,8 @@ import { User } from './users';
 export interface ModalState {
     token: string,
     user: User,
-    loading: boolean
+    loading: boolean,
+    error: string
 }
 
 interface LoginAction {
@@ -22,4 +23,9 @@ interface LogOut {
     type: AuthActionTypes.LOGOUT
 }
 
-export type ModalAction = LoginAction | LoadingModal | LogOut
+interface ErrorAction {
+    type: AuthActionTypes.ERROR,
+    payload: string
+}
+
+export type ModalAction = LoginAction | LoadingModal | LogOut | ErrorAction

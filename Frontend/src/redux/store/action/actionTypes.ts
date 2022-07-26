@@ -5,7 +5,8 @@ export enum UserActionTypes {
 export enum AuthActionTypes {
     LOGIN = 'LOGIN',
     REGISTRATION = 'REGISTRATION',
-    LOGOUT = 'LOGOUT'
+    LOGOUT = 'LOGOUT',
+    ERROR = 'ERROR'
 }
 
 export enum LoadingActionTypes {

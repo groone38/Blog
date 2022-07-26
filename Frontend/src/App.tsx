@@ -7,6 +7,8 @@ import classes from "./App.module.scss";
 import { fetchUsers } from "./redux/store/action/usersAction";
 import { useAppDispatch, useAppSelector } from "./hook";
 import { Home } from "./components/page/home/Home";
+import Posts from './components/page/posts/Posts';
+import Post from './components/page/post/Post';
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -20,16 +22,21 @@ export const App = () => {
       <Header />
       <div className={classes.wrapper}>
         <Routes>
-          {!sing.token ? (
+          {/* {!sing.token ? (
             <>
-              <Route path="/" element={<ModalLogin />} />
+              <Route path="/login" element={<ModalLogin />} />
               <Route path="/registr" element={<ModalRegistr />} />
             </>
           ) : (
             <>
               <Route path="/" element={<Home />} />
             </>
-          )}
+          )} */}
+           <Route path="/" element={<Home />} />
+           <Route path="/login" element={<ModalLogin />} />
+           <Route path="/registr" element={<ModalRegistr />} />
+           <Route path="/posts" element={<Posts />} />
+           <Route path="/posts/:id" element={<Post />} />
         </Routes>
       </div>
     </BrowserRouter>

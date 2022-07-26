@@ -1,14 +1,11 @@
 import React from "react";
 import { useAppSelector } from "../../../hook";
 import { Loader } from "./../../UI/loader/Loader";
+import CardItem from './../../UI/card/Card';
 
 export const Home = () => {
-  const loading = useAppSelector((state) => state.auth.loading);
-  console.log(loading)
+ 
   return (
-    <>
-      {loading && <Loader />}
-      <div>Home</div>
-    </>
+    <h1>Home</h1>
   );
 };
