@@ -4,19 +4,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid lightgray;
-    .block__btn {
-        width: 100%;
-        margin: 0 auto;
+    .btn__container {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding-right: 8px;
     }
-    // label {
-    //     margin-top: 10px;
-    // }
-    input {
-        // width: 100%;
-        // padding: 10px;
-    }
-    div {
-        
-        width: 100%;
-    }
+    
 }

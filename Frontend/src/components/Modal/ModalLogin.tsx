@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 export const ModalLogin = () => {
   const [user, setUser] = useState({});
   const dispatch = useAppDispatch();
-  const auth = useAppSelector(state => state.auth)
+  const auth = useAppSelector((state) => state.auth);
   const onSubmitHandler = () => {
     dispatch(loginUser(user));
   };
@@ -34,40 +34,46 @@ export const ModalLogin = () => {
         <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
           Login
         </Typography>
-        {/* <InputLabel htmlFor="username">Введите свое имя</InputLabel>
-        <Input
-          id="username"
+        <TextField
+          error={!!auth.error}
+          id="outlined-basic"
+          label="Введите свое имя"
+          helperText={`${auth.error}`}
+          variant="outlined"
           name="username"
-          color="primary"
-          className={classes.input}
           onChange={valueHandler}
-        /> */}
-        <TextField id="outlined-basic" label="Введите свое имя" variant="outlined" name='username' onChange={valueHandler}/>
-        <TextField id="outlined-basic" label="Введите свой пароль" variant="outlined" name='password' onChange={valueHandler}/>
-        {/* <InputLabel htmlFor="password">Введите свой пароль</InputLabel>
-        <Input
-          id="password"
+          style={{width: '100%', marginBottom: '10px'}}
+        />
+        <TextField
+        error={!!auth.error}
+          id="outlined-basic"
+          label="Введите свой пароль"
+          helperText={`${auth.error}`}
+          variant="outlined"
           name="password"
-          type="password"
-          color="primary"
           onChange={valueHandler}
-        /> */}
+          style={{width: '100%', marginBottom: '10px'}}
+        />
       </CardContent>
-      <CardActions>
-        <Button
-          size="small"
-          className={classes.block__btn}
-          onClick={onSubmitHandler}
-          variant="contained"
-        >
-          Login
-        </Button>
-      </CardActions>
-      <CardActions>
-        <Button size="small"  variant="contained" className={classes.block__btn}>
-          <Link to="/registr">Sing Up</Link>
-        </Button>
-      </CardActions>
+      <div className={classes.btn__container}>
+        <CardActions>
+          <Button
+            size="small"
+            onClick={onSubmitHandler}
+            variant="contained"
+          >
+            Login
+          </Button>
+        </CardActions>
+        <CardActions>
+          <Button
+            size="small"
+            variant="contained"
+          >
+            <Link to="/registr">Sing Up</Link>
+          </Button>
+        </CardActions>
+      </div>
     </Card>
   );
 };
