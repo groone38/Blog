@@ -6,7 +6,8 @@ export interface ModalState {
     token: string,
     user: User,
     loading: boolean,
-    error: string
+    error: string,
+    success: string
 }
 
 interface LoginAction {

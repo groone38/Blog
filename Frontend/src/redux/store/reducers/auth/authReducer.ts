@@ -8,10 +8,14 @@ const initialState: ModalState = {
         _id: '',
         username: '',
         passwodr: '',
-        roles: [] 
+        roles: [],
+        number: '',
+        city: '',
+        company: ''
     },
     loading: false,
-    error: ''
+    error: '',
+    success: ''
 }
 
 export const authReducer = (state = initialState, action: ModalAction): ModalState => {
@@ -31,7 +35,10 @@ export const authReducer = (state = initialState, action: ModalAction): ModalSta
                     _id: '',
                     username: '',
                     passwodr: '',
-                    roles: [] 
+                    roles: [],
+                    number: '',
+                    city: '',
+                    company: ''
                 },
                 error: ''
             }

@@ -7,21 +7,26 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./ModalLogin.module.scss";
-import Input from "@mui/material/Input";
 import { loginUser } from "../../redux/store/action/auth/authAction";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ModalLogin = () => {
   const [user, setUser] = useState({});
+  const navigate = useNavigate()
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth);
   const onSubmitHandler = () => {
     dispatch(loginUser(user));
   };
-  console.log(auth);
+  useEffect(() => {
+    if(auth.token) {
+      navigate('/home')
+    }
+  }, [auth.token])
+
   const valueHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setUser({
       ...user,
@@ -50,6 +55,7 @@ export const ModalLogin = () => {
           label="Введите свой пароль"
           helperText={`${auth.error}`}
           variant="outlined"
+          type="password"
           name="password"
           onChange={valueHandler}
           style={{width: '100%', marginBottom: '10px'}}

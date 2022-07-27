@@ -23,7 +23,7 @@ class AuthController {
           errors,
         });
       }
-      const { username, password } = req.body;
+      const { username, password, number, city, company } = req.body;
       const candidate = await User.findOne({ username });
       if (candidate) {
         return res.status(400).json({
@@ -36,6 +36,9 @@ class AuthController {
         username,
         password: hashPassword,
         roles: [userRole.value],
+        number,
+        city,
+        company
       });
       await user.save();
       return res.json({
@@ -88,6 +91,14 @@ class AuthController {
       res.json(users);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async getUser(req, res) {
+    try {
+      
+    } catch (error) {
+      
     }
   }
 }

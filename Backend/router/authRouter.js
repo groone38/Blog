@@ -10,5 +10,6 @@ routerAuth.post('/registration', [
 ], authControllers.registration)
 routerAuth.post('/login', authControllers.login)
 routerAuth.get('/user', authControllers.getUsers)
+routerAuth.get('/user', authControllers.getUser)
 
 export default routerAuth

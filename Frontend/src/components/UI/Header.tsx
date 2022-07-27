@@ -9,13 +9,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { logOut } from "../../redux/store/action/auth/authAction";
+import test from "../../image/test.png";
+import { Avatar } from "@mui/material";
 
 export const Header = () => {
   const sing = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const outHandler = () => {
-    dispatch(logOut())
-  }
+    dispatch(logOut());
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -35,16 +37,19 @@ export const Header = () => {
           {!sing.token ? (
             <>
               <Button color="inherit">
-                <Link to="/login">Login</Link>
+                <Link to="/">Login</Link>
               </Button>
               <Button color="inherit">
                 <Link to="/registr">Sing up</Link>
               </Button>
             </>
           ) : (
-            <Button color="inherit" onClick={outHandler}>
-              Out
-            </Button>
+            <>
+              <Avatar alt="Remy Sharp" src={test} style={{cursor: 'pointer'}}/>
+              <Button color="inherit" onClick={outHandler}>
+                Out
+              </Button>
+            </>
           )}
         </Toolbar>
       </AppBar>

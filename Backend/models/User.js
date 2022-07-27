@@ -10,7 +10,19 @@ const User = new mongoose.Schema({
         type: String,
         required: true
     },
-    roles: [{type: String, ref: 'Role'}]
+    roles: [{type: String, ref: 'Role'}],
+    number: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    company: {
+        type: String,
+        required: true
+    }
 })
 
 export default mongoose.model('User', User)

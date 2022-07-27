@@ -4,6 +4,7 @@ import { ModalState } from "../../../types/Modal";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { RootState } from "../../rootReducer";
+import { User } from "./../../../types/users";
 
 export const loginUser = (
   user: any
@@ -11,15 +12,14 @@ export const loginUser = (
   return async (dispatch: ThunkDispatch<RootState, void, AnyAction>) => {
     try {
       // dispatch({type: LoadingActionTypes.LOADING})
-      const responce = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/auth/login",
         user
       );
-      dispatch(login(responce.data));
+      dispatch(login(response.data));
       // dispatch({type: LoadingActionTypes.LOADING})
     } catch (error) {
       dispatch(errorLogin(error.response.data.message));
-      console.log("error", error.response.data.message);
     }
   };
 };
@@ -28,12 +28,14 @@ export const registrUser = (
   user: any
 ): ThunkAction<void, RootState, void, AnyAction> => {
   return async (dispatch: ThunkDispatch<RootState, void, AnyAction>) => {
+    dispatch({type: LoadingActionTypes.LOADING})
     try {
-      await axios.post("http://localhost:5000/auth/registration", user);
-      dispatch(loginUser(user));
+      const response = await axios.post("http://localhost:5000/auth/registration", user);
+      dispatch({type: AuthActionTypes.REGISTRATION, payload: response.data.message});
     } catch (error) {
-      console.log(error);
+      dispatch({type: AuthActionTypes.ERROR, payload: error.response.data.message});
     }
+    dispatch({type: LoadingActionTypes.LOADING})
   };
 };
 

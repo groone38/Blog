@@ -5,6 +5,9 @@ export interface User {
     username: string
     passwodr: string
     roles: []
+    number: string
+    city: string
+    company: string
 }
 
 export interface UserState{

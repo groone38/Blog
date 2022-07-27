@@ -32,9 +32,9 @@ export const App = () => {
               <Route path="/" element={<Home />} />
             </>
           )} */}
-           <Route path="/" element={<Home />} />
-           <Route path="/login" element={<ModalLogin />} />
+           <Route path="/" element={<ModalLogin />} />
            <Route path="/registr" element={<ModalRegistr />} />
+           <Route path="/home" element={<Home />} />
            <Route path="/posts" element={<Posts />} />
            <Route path="/posts/:id" element={<Post />} />
         </Routes>
